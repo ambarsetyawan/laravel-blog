@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', 'HomeController@index');
+Route::get('/', ['as' => 'front', 'uses' => 'HomeController@index']);
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',
@@ -20,4 +20,6 @@ Route::controllers([
 
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
     Route::get('/', ['as' => 'home', 'uses' => 'AdminHomeController@index']);
+
+    Route::resource('article', 'AdminArticleController');
 });
