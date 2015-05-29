@@ -1,0 +1,3 @@
+# Laravel blog
+Simple blog with using Laravel 5
+To be continued...
