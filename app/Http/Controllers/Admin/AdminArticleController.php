@@ -76,10 +76,9 @@ class AdminArticleController extends Controller
     public function update($id, ArticleRequest $request)
     {
         $article = Article::findOrFail($id);
-
         $article->update($request->all());
 
-        return redirect('admin/article')->massege();
+        return redirect('admin/article');
     }
 
     /**
@@ -90,7 +89,10 @@ class AdminArticleController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Article::find($id)->delete();
+
+        return redirect('admin/article');
+
     }
 
 }

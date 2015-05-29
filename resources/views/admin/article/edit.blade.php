@@ -22,8 +22,12 @@
                 {!! Form::textarea('body', null, ['class' => 'form-control']) !!}
             </div>
 
-            {!! Form::submit('Add article', ['class' => 'btn btn-primary']) !!}
+            {!! Form::submit('Update', ['class' => 'btn btn-primary pull-left']) !!}
 
+            {!! Form::close() !!}
+
+            {!! Form::open(['method' => 'delete', 'url' => 'admin/article/'.$article->id]) !!}
+                <button type="submit" class="btn btn-danger" style="margin: 0 10px;">Delete</button>
             {!! Form::close() !!}
         </div>
     </div>

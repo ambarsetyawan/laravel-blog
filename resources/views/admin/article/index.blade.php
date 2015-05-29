@@ -15,9 +15,9 @@
             <table class="table table-bordered table-hover">
                 <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>Title</th>
-                    <th>Category</th>
+                    <th width="20%">Title</th>
+                    <th>Body</th>
+                    <th width="10%">Category</th>
                     <th>Action</th>
                 </tr>
                 </thead>
@@ -28,8 +28,11 @@
                         <td>{{ $article->body }}</td>
                         <td>Category</td>
                         <td>
-                            <a href="{{url('admin/article/' . $article->id . '/edit')}}"><i class="fa fa-pencil"></i></a> |
-                            <a href=""><i class="fa fa-trash"></i></a>
+                            {!! Form::open(['method' => 'get', 'url' => 'admin/article/' . $article->id . '/edit']) !!}
+                            <button type="submit" class="btn btn-default">Edit</button>
+                            {!! Form::close() !!}
+
+
                         </td>
                     </tr>
                 @endforeach
