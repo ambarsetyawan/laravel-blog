@@ -9,15 +9,24 @@
 
     <div class="row">
         <div class="col-lg-12">
-            {!! Form::open() !!}
+            @if ($errors->any())
+                <ul class="alert alert-danger">
+                    @foreach($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+
+            @endif
+
+            {!! Form::open(['url' => 'admin/article']) !!}
             <div class="form-group">
                 {!! Form::label('title', 'Title') !!}
                 {!! Form::text('title', null, ['class' => 'form-control']) !!}
             </div>
 
             <div class="form-group">
-                {!! Form::label('description', 'Description') !!}
-                {!! Form::textarea('description', null, ['class' => 'form-control']) !!}
+                {!! Form::label('body', 'Body') !!}
+                {!! Form::textarea('body', null, ['class' => 'form-control']) !!}
             </div>
 
             {!! Form::submit('Add article', ['class' => 'btn btn-primary']) !!}

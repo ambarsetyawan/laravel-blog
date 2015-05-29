@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', ['as' => 'front', 'uses' => 'HomeController@index']);
+Route::get('/', ['as' => 'front', 'uses' => 'ArticleController@index']);
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',
