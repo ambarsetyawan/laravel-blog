@@ -12,13 +12,14 @@
 */
 
 Route::get('/', ['as' => 'front', 'uses' => 'ArticleController@index']);
+Route::get('/article/{id}', ['as' => 'show', 'uses' => 'ArticleController@show']);
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
 ]);
 
-Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
+Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'auth'], function () {
     Route::get('/', ['as' => 'home', 'uses' => 'AdminHomeController@index']);
 
     Route::resource('article', 'AdminArticleController');

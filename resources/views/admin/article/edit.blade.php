@@ -12,22 +12,11 @@
 
 
             {!! Form::model($article, ['method' => 'PATCH', 'action' => ['Admin\AdminArticleController@update', $article->id]]) !!}
-            <div class="form-group">
-                {!! Form::label('title', 'Title') !!}
-                {!! Form::text('title', null, ['class' => 'form-control']) !!}
-            </div>
-
-            <div class="form-group">
-                {!! Form::label('body', 'Body') !!}
-                {!! Form::textarea('body', null, ['class' => 'form-control']) !!}
-            </div>
-
-            {!! Form::submit('Update', ['class' => 'btn btn-primary pull-left']) !!}
-
+                @include('admin/article/_form', ['submitText' => 'Update'])
             {!! Form::close() !!}
 
             {!! Form::open(['method' => 'delete', 'url' => 'admin/article/'.$article->id]) !!}
-                <button type="submit" class="btn btn-danger" style="margin: 0 10px;">Delete</button>
+                <button type="submit" class="btn btn-danger">Delete</button>
             {!! Form::close() !!}
         </div>
     </div>
