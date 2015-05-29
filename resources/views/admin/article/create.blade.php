@@ -18,20 +18,20 @@
 
             @endif
 
-            {!! Form::open(['url' => 'admin/article']) !!}
-            <div class="form-group">
-                {!! Form::label('title', 'Title') !!}
-                {!! Form::text('title', null, ['class' => 'form-control']) !!}
-            </div>
+                {!! Form::open(['url' => 'admin/article']) !!}
+                <div class="form-group">
+                    {!! Form::label('title', 'Title') !!}
+                    {!! Form::text('title', null, ['class' => 'form-control']) !!}
+                </div>
 
-            <div class="form-group">
-                {!! Form::label('body', 'Body') !!}
-                {!! Form::textarea('body', null, ['class' => 'form-control']) !!}
-            </div>
+                <div class="form-group">
+                    {!! Form::label('body', 'Body') !!}
+                    {!! Form::textarea('body', null, ['class' => 'form-control']) !!}
+                </div>
 
-            {!! Form::submit('Add article', ['class' => 'btn btn-primary']) !!}
+                {!! Form::submit('Add article', ['class' => 'btn btn-primary']) !!}
 
-            {!! Form::close() !!}
+                {!! Form::close() !!}
         </div>
     </div>
 @stop

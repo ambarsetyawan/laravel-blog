@@ -63,7 +63,8 @@ class AdminArticleController extends Controller
      */
     public function edit($id)
     {
-        //
+        $article = Article::findOrFail($id);
+        return view('admin.article.edit', compact('article'));
     }
 
     /**
@@ -72,9 +73,13 @@ class AdminArticleController extends Controller
      * @param  int $id
      * @return Response
      */
-    public function update($id)
+    public function update($id, ArticleRequest $request)
     {
-        //
+        $article = Article::findOrFail($id);
+
+        $article->update($request->all());
+
+        return redirect('admin/article')->massege();
     }
 
     /**

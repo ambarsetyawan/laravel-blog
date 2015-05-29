@@ -28,7 +28,7 @@
                         <td>{{ $article->body }}</td>
                         <td>Category</td>
                         <td>
-                            <a href=""><i class="fa fa-pencil"></i></a> |
+                            <a href="{{url('admin/article/' . $article->id . '/edit')}}"><i class="fa fa-pencil"></i></a> |
                             <a href=""><i class="fa fa-trash"></i></a>
                         </td>
                     </tr>
