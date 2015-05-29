@@ -40,7 +40,8 @@ class AdminArticleController extends Controller
 
     public function store(ArticleRequest $request)
     {
-        Article::create($request->all());
+        \Auth::user()->article()->save(new Article($request->all()));
+//        Article::create($request->all());
 
         Flash::success('Content created!');
 

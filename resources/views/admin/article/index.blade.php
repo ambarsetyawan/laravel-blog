@@ -16,8 +16,9 @@
                 <thead>
                 <tr>
                     <th width="20%">Title</th>
-                    <th>Body</th>
-                    <th width="10%">Category</th>
+                    <th>Category</th>
+                    <th>Date</th>
+                    <th>Author</th>
                     <th>Action</th>
                 </tr>
                 </thead>
@@ -25,8 +26,9 @@
                 @foreach($articles as $article)
                     <tr>
                         <td>{{ $article->title }}</td>
-                        <td>{{ $article->body }}</td>
                         <td>Category</td>
+                        <td>{{ $article->created_at }}</td>
+                        <td>{{ \App\User::find($article->user_id)->name }}</td>
                         <td>
                             {!! Form::open(['method' => 'get', 'url' => 'admin/article/' . $article->id . '/edit']) !!}
                             <button type="submit" class="btn btn-default">Edit</button>
