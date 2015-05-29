@@ -38,6 +38,12 @@ class AdminArticleController extends Controller
     }
 
 
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param ArticleRequest $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function store(ArticleRequest $request)
     {
         \Auth::user()->article()->save(new Article($request->all()));
@@ -64,7 +70,7 @@ class AdminArticleController extends Controller
      * Update the specified resource in storage.
      *
      * @param  int $id
-     * @return Response
+     * @return ArticleRequest $request
      */
     public function update($id, ArticleRequest $request)
     {
