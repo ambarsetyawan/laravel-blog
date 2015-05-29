@@ -113,6 +113,7 @@
     </nav>
 
     <div id="page-wrapper">
+        @include('admin/flash')
         @yield('content')
     </div>
     <!-- /#page-wrapper -->

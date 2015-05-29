@@ -5,6 +5,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Http\Requests\ArticleRequest;
+use Laracasts\Flash\Flash;
 
 
 /**
@@ -41,18 +42,9 @@ class AdminArticleController extends Controller
     {
         Article::create($request->all());
 
-        return \Redirect::to('/admin/article');
-    }
+        Flash::success('Content created!');
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int $id
-     * @return Response
-     */
-    public function show($id)
-    {
-        //
+        return \Redirect::to('/admin/article');
     }
 
     /**
@@ -78,6 +70,8 @@ class AdminArticleController extends Controller
         $article = Article::findOrFail($id);
         $article->update($request->all());
 
+        Flash::success('Update content!');
+
         return redirect('admin/article');
     }
 
@@ -90,6 +84,8 @@ class AdminArticleController extends Controller
     public function destroy($id)
     {
         Article::find($id)->delete();
+
+        Flash::success('Content deleted!');
 
         return redirect('admin/article');
 

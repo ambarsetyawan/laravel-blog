@@ -22,7 +22,7 @@ body {
     #page-wrapper {
         position: inherit;
         margin: 0 0 0 250px;
-        padding: 0 30px;
+        padding: 20px 30px 0;
         border-left: 1px solid #e7e7e7;
     }
 }
@@ -356,4 +356,8 @@ table.dataTable thead .sorting:after {
 .btn-create {
     display: block;
     margin-bottom: 10px;
+}
+
+.page-header {
+    margin-top: 0;
 }
