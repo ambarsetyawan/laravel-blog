@@ -3,19 +3,20 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateArticlesTable extends Migration
-{
+class CreateArticlesTable extends Migration {
 
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
+	/**
+	 * Run the migrations.
+	 *
+	 * @return void
+	 */
     public function up()
     {
         Schema::create('articles', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->increments('id');
             $table->integer('user_id')->unsigned();
+            $table->integer('category_id')->unsigned()->nullable();
             $table->string('title');
             $table->string('slug')->unique();
             $table->text('body');
@@ -25,17 +26,22 @@ class CreateArticlesTable extends Migration
                 ->references('id')
                 ->on('users')
                 ->onDelete('cascade');
+
+            $table->foreign('category_id')
+                ->references('id')
+                ->on('categories')
+                ->onDelete('cascade');
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        Schema::drop('articles');
-    }
+	/**
+	 * Reverse the migrations.
+	 *
+	 * @return void
+	 */
+	public function down()
+	{
+		Schema::drop('articles');
+	}
 
 }

@@ -16,7 +16,8 @@ class Article extends Model
         'title',
         'slug',
         'body',
-        'user_id'
+        'user_id',
+        'category_id'
     ];
 
     /**

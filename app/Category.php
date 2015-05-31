@@ -6,11 +6,10 @@ class Category extends Model {
 
     protected $fillable = [
         'name',
-//        'article_id',
     ];
 
-//    public function article()
-//    {
-//        return $this->hasMany('App\Article');
-//    }
+    public function article()
+    {
+        return $this->hasMany('App\Article');
+    }
 }

@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers\Admin;
 
 use App\Article;
+use App\Category;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -37,7 +38,9 @@ class AdminArticleController extends Controller
      */
     public function create()
     {
-        return view('admin.article.create');
+        $categories = Category::lists('name', 'id');
+//        dd($categories);
+        return view('admin.article.create', compact('categories'));
     }
 
 
@@ -49,7 +52,8 @@ class AdminArticleController extends Controller
      */
     public function store(ArticleRequest $request)
     {
-        \Auth::user()->article()->save(new Article($request->all()));
+        $article = \Auth::user()->article()->save(new Article($request->all()));
+//        $article->category()->attach($request->input('categories'));
 
         Flash::success('Content created!');
 
