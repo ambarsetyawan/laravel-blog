@@ -11,8 +11,12 @@
 |
 */
 
+Route::bind('article', function ($slug){
+    return App\Article::where('slug', $slug)->first();
+});
+
 Route::get('/', ['as' => 'front', 'uses' => 'ArticleController@index']);
-Route::get('/article/{id}', ['as' => 'show', 'uses' => 'ArticleController@show']);
+Route::get('/article/{article}', ['as' => 'show', 'uses' => 'ArticleController@show']);
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',

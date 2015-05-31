@@ -9,7 +9,7 @@
 
     <div class="row">
         <div class="col-lg-12">
-            <a class="btn-create" href="{{ url('admin/article/create') }}">
+            <a class="btn-create" href="{{ route('admin.article.create') }}">
                 <button class="btn btn-primary">Create</button>
             </a>
             <table class="table table-bordered table-hover">
@@ -29,12 +29,13 @@
                         <td>Category</td>
                         <td>{{ $article->created_at }}</td>
                         <td>{{ \App\User::find($article->user_id)->name }}</td>
-                        <td>
-                            {!! Form::open(['method' => 'get', 'url' => 'admin/article/' . $article->id . '/edit']) !!}
-                            <button type="submit" class="btn btn-default">Edit</button>
+                        <td width="10%">
+                            {!! Form::open(['method' => 'GET', 'url' => 'admin/article/' . $article->id . '/edit']) !!}
+                                <button type="submit" class="btn btn-sm btn-default adm-btn"><i class="fa fa-pencil"></i></button>
                             {!! Form::close() !!}
-
-
+                            {!! Form::open(['method' => 'DELETE', 'url' => 'admin/article/' . $article->id]) !!}
+                                <button type="submit" class="btn btn-sm btn-default adm-btn"><i class="fa fa-trash"></i></button>
+                            {!! Form::close() !!}
                         </td>
                     </tr>
                 @endforeach
