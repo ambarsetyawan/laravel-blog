@@ -19,11 +19,12 @@ class AdminArticleController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param Article $article
      * @return \Illuminate\View\View
      */
-    public function index()
+    public function index(Article $article)
     {
-        $articles = Article::latest()->get();
+        $articles = $article->latest()->get();
 
         return view('admin.article.index', compact('articles'));
     }
@@ -59,13 +60,11 @@ class AdminArticleController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param $id
+     * @param Article $article
      * @return \Illuminate\View\View
      */
-    public function edit($id)
+    public function edit(Article $article)
     {
-        $article = Article::findOrFail($id);
-
         return view('admin.article.edit', compact('article'));
     }
 
@@ -73,13 +72,12 @@ class AdminArticleController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param $id
+     * @param Article $article
      * @param ArticleRequest $request
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function update($id, ArticleRequest $request)
+    public function update(Article $article, ArticleRequest $request)
     {
-        $article = Article::findOrFail($id);
         $article->update($request->all());
 
         Flash::success('Update content!');
@@ -91,15 +89,16 @@ class AdminArticleController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param $id
+     * @param Article $article
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function destroy($id)
+    public function destroy(Article $article)
     {
-        Article::find($id)->delete();
+        $article->delete();
 
         Flash::success('Content deleted!');
 
         return redirect('admin/article');
     }
+
 }

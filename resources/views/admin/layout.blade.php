@@ -82,10 +82,10 @@
                         <a href="{{ route('home') }}"><i class="fa fa-home fa-fw"></i> Dashboard</a>
                     </li>
                     <li>
-                        <a href="{{ url('/admin/article') }}"><i class="fa fa-edit fa-fw"></i> Content</a>
+                        <a href="{{ route('admin.article.index') }}"><i class="fa fa-edit fa-fw"></i> Content</a>
                     </li>
                     <li>
-                        <a href="tables.html"><i class="fa fa-list fa-fw"></i> Category</a>
+                        <a href="{{ route('admin.category.index') }}"><i class="fa fa-list fa-fw"></i> Category</a>
                     </li>
                     <li>
                         <a href="tables.html"><i class="fa fa-comments-o fa-fw"></i> Comments</a>

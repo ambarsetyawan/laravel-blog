@@ -4,50 +4,42 @@
 
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Contents</h1>
+            <h1 class="page-header">Categories</h1>
         </div>
     </div>
 
     <div class="row">
         <div class="col-lg-12">
-            <a class="btn-create" href="{{ route('admin.article.create') }}">
+            <a class="btn-create" href="{{ route('admin.category.create') }}">
                 <button class="btn btn-primary">Create</button>
             </a>
-            @if(count($articles))
+            @if(count($categories))
                 <table class="table table-bordered table-hover">
-                    <thead>
                     <tr>
-                        <th width="20%">Title</th>
-                        <th>Category</th>
-                        <th>Date</th>
-                        <th>Author</th>
+                        <th>ID</th>
+                        <th>Name</th>
                         <th>Action</th>
                     </tr>
-                    </thead>
-                    <tbody>
-                    @foreach($articles as $article)
+                    @foreach($categories as $category)
                         <tr>
-                            <td>{{ $article->title }}</td>
-                            <td>Category</td>
-                            <td>{{ $article->created_at }}</td>
-                            <td>{{ \App\User::find($article->user_id)->name }}</td>
+                            <td>{{ $category->id }}</td>
+                            <td>{{ $category->name }}</td>
                             <td width="10%">
-                                {!! Form::open(['method' => 'GET', 'url' => 'admin/article/' . $article->slug .
+                                {!! Form::open(['method' => 'GET', 'url' => 'admin/category/' . $category->id .
                                 '/edit']) !!}
                                 <button type="submit" class="btn btn-sm btn-default adm-btn"><i
                                             class="fa fa-pencil"></i></button>
                                 {!! Form::close() !!}
-                                {!! Form::open(['method' => 'DELETE', 'url' => 'admin/article/' . $article->slug]) !!}
+                                {!! Form::open(['method' => 'DELETE', 'url' => 'admin/category/' . $category->id]) !!}
                                 <button type="submit" class="btn btn-sm btn-default adm-btn"><i class="fa fa-trash"></i>
                                 </button>
                                 {!! Form::close() !!}
                             </td>
                         </tr>
                     @endforeach
-                    </tbody>
                 </table>
             @else
-                <h3>Articles nor found!</h3>
+                <h3>Categories not found</h3>
             @endif
         </div>
     </div>

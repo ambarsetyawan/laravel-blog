@@ -27,4 +27,5 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'auth
     Route::get('/', ['as' => 'home', 'uses' => 'AdminHomeController@index']);
 
     Route::resource('article', 'AdminArticleController');
+    Route::resource('category', 'AdminCategoryController');
 });
