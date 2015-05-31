@@ -39,7 +39,7 @@ class AdminArticleController extends Controller
     public function create()
     {
         $categories = Category::lists('name', 'id');
-//        dd($categories);
+
         return view('admin.article.create', compact('categories'));
     }
 
@@ -52,9 +52,10 @@ class AdminArticleController extends Controller
      */
     public function store(ArticleRequest $request)
     {
-        \Auth::user()->article()->save(new Article($request->all()));
-//        $article = \Auth::user()->article()->save(new Article($request->all()));
-//        $article->category()->attach($request->input('categories'));
+        $article = new Article($request->all());
+        $category = Category::find($request->input('categories'));
+        $article->category()->associate($category);
+        \Auth::user()->article()->save($article);
 
         Flash::success('Content created!');
 

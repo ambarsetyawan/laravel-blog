@@ -28,9 +28,9 @@
                     @foreach($articles as $article)
                         <tr>
                             <td>{{ $article->title }}</td>
-                            <td>Category</td>
+                            <td>{{ $article->category->name }}</td>
                             <td>{{ $article->created_at }}</td>
-                            <td>{{ \App\User::find($article->user_id)->name }}</td>
+                            <td>{{ $article->user->name }}</td>
                             <td width="10%">
                                 {!! Form::open(['method' => 'GET', 'url' => 'admin/article/' . $article->slug .
                                 '/edit']) !!}
