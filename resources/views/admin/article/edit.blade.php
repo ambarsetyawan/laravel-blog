@@ -10,7 +10,7 @@
     <div class="row">
         <div class="col-lg-12">
             @include('errors/list')
-            {!! Form::model($article, ['method' => 'PATCH', 'action' => ['Admin\AdminArticleController@update', $article->id]]) !!}
+            {!! Form::model($article, ['method' => 'patch', 'url' => action('Admin\AdminArticleController@update', $article)]) !!}
                 @include('admin/article/_form', ['submitText' => 'Update'])
             {!! Form::close() !!}
         </div>

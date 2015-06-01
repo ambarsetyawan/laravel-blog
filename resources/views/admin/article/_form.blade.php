@@ -9,8 +9,8 @@
 </div>
 
 <div class="form-group">
-    {!! Form::label('categories', 'Categories') !!}
-    {!! Form::select('categories', $categories, null, ['class' => 'form-control']) !!}
+    {!! Form::label('category_id', 'Categories') !!}
+    {!! Form::select('category_id', $categories, null, ['class' => 'form-control']) !!}
 </div>
 
 <div class="form-group">

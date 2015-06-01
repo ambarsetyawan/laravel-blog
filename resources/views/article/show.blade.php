@@ -4,7 +4,7 @@
 
     <article>
         <h1>{{ $article->title }}</h1>
-        <span>Posted {{ $article->created_at }} by {{ $article->user->name }}</span>
+        <span>Posted {{ $article->created_at }}</span>
         <p>{{ $article->body }}</p>
     </article>
 

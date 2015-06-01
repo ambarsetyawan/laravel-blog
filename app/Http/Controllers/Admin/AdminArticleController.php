@@ -52,12 +52,8 @@ class AdminArticleController extends Controller
      */
     public function store(ArticleRequest $request)
     {
-        $article = new Article($request->all());
-        $category = Category::find($request->input('categories'));
-        $article->category()->associate($category);
-        \Auth::user()->article()->save($article);
-
-        Flash::success('Content created!');
+//        dd(\Auth::user());
+        \Auth::user()->articles()->save(new Article($request->all()));
 
         return \Redirect::to('/admin/article');
     }
@@ -71,7 +67,9 @@ class AdminArticleController extends Controller
      */
     public function edit(Article $article)
     {
-        return view('admin.article.edit', compact('article'));
+        $categories = Category::lists('name', 'id');
+
+        return view('admin.article.edit', compact('article', 'categories'));
     }
 
 
@@ -84,9 +82,8 @@ class AdminArticleController extends Controller
      */
     public function update(Article $article, ArticleRequest $request)
     {
+//        dd($request->all());
         $article->update($request->all());
-
-        Flash::success('Update content!');
 
         return redirect('admin/article');
     }

@@ -20,7 +20,6 @@
                         <th width="20%">Title</th>
                         <th>Category</th>
                         <th>Date</th>
-                        <th>Author</th>
                         <th>Action</th>
                     </tr>
                     </thead>
@@ -30,7 +29,6 @@
                             <td>{{ $article->title }}</td>
                             <td>{{ $article->category->name }}</td>
                             <td>{{ $article->created_at }}</td>
-                            <td>{{ $article->user->name }}</td>
                             <td width="10%">
                                 {!! Form::open(['method' => 'GET', 'url' => 'admin/article/' . $article->slug .
                                 '/edit']) !!}

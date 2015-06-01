@@ -13,10 +13,9 @@ class CreateArticlesTable extends Migration {
     public function up()
     {
         Schema::create('articles', function (Blueprint $table) {
-            $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->integer('user_id')->unsigned()->nullable();
-            $table->integer('category_id')->unsigned()->nullable();
+            $table->integer('user_id')->unsigned();
+            $table->integer('category_id')->unsigned();
             $table->string('title');
             $table->string('slug')->unique();
             $table->text('body');
