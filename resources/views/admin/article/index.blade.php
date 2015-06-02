@@ -30,12 +30,12 @@
                             <td>{{ $article->category->name }}</td>
                             <td>{{ $article->created_at }}</td>
                             <td width="10%">
-                                {!! Form::open(['method' => 'GET', 'url' => 'admin/article/' . $article->slug .
+                                {!! Form::open(['method' => 'GET', 'url' => 'admin/article/' . $article->id .
                                 '/edit']) !!}
                                 <button type="submit" class="btn btn-sm btn-default adm-btn"><i
                                             class="fa fa-pencil"></i></button>
                                 {!! Form::close() !!}
-                                {!! Form::open(['method' => 'DELETE', 'url' => 'admin/article/' . $article->slug]) !!}
+                                {!! Form::open(['method' => 'DELETE', 'url' => 'admin/article/' . $article->id]) !!}
                                 <button type="submit" class="btn btn-sm btn-default adm-btn"><i class="fa fa-trash"></i>
                                 </button>
                                 {!! Form::close() !!}

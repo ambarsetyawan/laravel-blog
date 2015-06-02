@@ -62,11 +62,12 @@ class AdminArticleController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param Article $article
+     * @param Int $id
      * @return \Illuminate\View\View
      */
-    public function edit(Article $article)
+    public function edit($id)
     {
+        $article = Article::findOrFail($id);
         $categories = Category::lists('name', 'id');
 
         return view('admin.article.edit', compact('article', 'categories'));
@@ -76,13 +77,14 @@ class AdminArticleController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param Article $article
+     * @param Int $id
      * @param ArticleRequest $request
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function update(Article $article, ArticleRequest $request)
+    public function update($id, ArticleRequest $request)
     {
 //        dd($request->all());
+        $article = Article::findOrFail($id);
         $article->update($request->all());
 
         return redirect('admin/article');
@@ -92,11 +94,12 @@ class AdminArticleController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param Article $article
+     * @param Int $id
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function destroy(Article $article)
+    public function destroy($id)
     {
+        $article = Article::findOrFail($id);
         $article->delete();
 
         Flash::success('Content deleted!');

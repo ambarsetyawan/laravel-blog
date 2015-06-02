@@ -11,10 +11,6 @@
 |
 */
 
-Route::bind('article', function ($slug){
-    return App\Article::where('slug', $slug)->first();
-});
-
 Route::get('/', ['as' => 'front', 'uses' => 'ArticleController@index']);
 Route::get('/article/{article}', ['as' => 'show', 'uses' => 'ArticleController@show']);
 
