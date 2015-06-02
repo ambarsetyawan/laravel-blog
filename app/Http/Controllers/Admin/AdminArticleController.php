@@ -20,12 +20,12 @@ class AdminArticleController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @param Article $article
      * @return \Illuminate\View\View
      */
-    public function index(Article $article)
+    public function index()
     {
-        $articles = $article->latest()->get();
+        $articles = Article::latest()->with('category', 'user')->paginate(10);
+//        dd($articles);
 
         return view('admin.article.index', compact('articles'));
     }
@@ -52,8 +52,9 @@ class AdminArticleController extends Controller
      */
     public function store(ArticleRequest $request)
     {
-//        dd(\Auth::user());
-        \Auth::user()->articles()->save(new Article($request->all()));
+        \Auth::user()->article()->save(new Article($request->all()));
+
+        Flash::success('Content created!');
 
         return \Redirect::to('/admin/article');
     }
@@ -86,6 +87,8 @@ class AdminArticleController extends Controller
 //        dd($request->all());
         $article = Article::findOrFail($id);
         $article->update($request->all());
+
+        Flash::success('Content Updated!');
 
         return redirect('admin/article');
     }

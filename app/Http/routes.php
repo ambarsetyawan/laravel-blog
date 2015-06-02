@@ -24,4 +24,10 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'auth
 
     Route::resource('article', 'AdminArticleController');
     Route::resource('category', 'AdminCategoryController');
+
+    Route::get('comment', ['as' => 'admin.comment.index', 'uses' => 'AdminCommentController@index']);
+
 });
+
+Route::get('comment/create', ['as' => 'comment.create', 'uses' => 'CommentController@create']);
+Route::post('comment/{article_id}', ['as' => 'comment.store', 'uses' => 'CommentController@store']);

@@ -35,4 +35,9 @@ class Article extends Model
         return $this->belongsTo('App\Category');
     }
 
+    public function comment()
+    {
+        return $this->hasMany('App\Comment');
+    }
+
 }

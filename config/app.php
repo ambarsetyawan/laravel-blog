@@ -148,6 +148,7 @@ return [
         'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider',
         'Illuminate\Html\HtmlServiceProvider',
         'Laracasts\Flash\FlashServiceProvider',
+        'Barryvdh\Debugbar\ServiceProvider',
 	],
 
 	/*
@@ -198,6 +199,7 @@ return [
         'Form'=> 'Illuminate\Html\FormFacade',
         'HTML'=> 'Illuminate\Html\HtmlFacade',
         'Flash' => 'Laracasts\Flash\Flash',
+        'Debugbar' => 'Barryvdh\Debugbar\Facade',
 	],
 
 ];

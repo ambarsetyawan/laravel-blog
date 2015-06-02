@@ -10,16 +10,17 @@ class ArticleController extends Controller {
 
     public function index()
     {
-        $articles = Article::all();
+        $articles = Article::latest()->paginate(10);
 
         return view('article.index', compact('articles'));
     }
 
-    public function show(Article $article)
+    public function show($id)
     {
-//        $article = Article::findOrFail($id);
+        $article = Article::findOrFail($id);
+        $comments = Article::findOrFail($id)->comment;
 
-        return view('article.show', compact('article'));
+        return view('article.show', compact('article', 'comments'));
     }
 
 }

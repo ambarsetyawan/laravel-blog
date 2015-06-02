@@ -18,7 +18,7 @@ class Category extends Model {
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function articles()
+    public function article()
     {
         return $this->hasMany('App\Article');
     }

@@ -88,7 +88,7 @@
                         <a href="{{ route('admin.category.index') }}"><i class="fa fa-list fa-fw"></i> Category</a>
                     </li>
                     <li>
-                        <a href="tables.html"><i class="fa fa-comments-o fa-fw"></i> Comments</a>
+                        <a href="{{ route('admin.comment.index') }}"><i class="fa fa-comments-o fa-fw"></i> Comments</a>
                     </li>
                     <li>
                         <a href="forms.html"><i class="fa fa-users fa-fw"></i> Users</a>
