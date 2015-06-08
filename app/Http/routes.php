@@ -29,5 +29,10 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'auth
 
 });
 
+//Route::resource('comment', 'CommentController');
+
 Route::get('comment/create', ['as' => 'comment.create', 'uses' => 'CommentController@create']);
 Route::post('comment/{article_id}', ['as' => 'comment.store', 'uses' => 'CommentController@store']);
+Route::get('comment/{comment}/edit', ['as' => 'comment.edit', 'uses' => 'CommentController@edit']);
+Route::patch('comment/{comment}', ['as' => 'comment.update', 'uses' => 'CommentController@update']);
+Route::delete('comment/{comment}', ['as' => 'comment.delete', 'uses' => 'CommentController@destroy']);

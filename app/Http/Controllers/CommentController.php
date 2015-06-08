@@ -63,7 +63,9 @@ class CommentController extends Controller {
 	 */
 	public function edit($id)
 	{
-		//
+        $comment = Comment::findOrFail($id);
+
+        return view('comment.edit', compact('comment'));
 	}
 
 	/**
@@ -72,9 +74,12 @@ class CommentController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update($id, Request $request)
 	{
-		//
+        $comment = Comment::findOrFail($id);
+        $comment->update($request->all());
+
+        return redirect()->back();
 	}
 
 	/**
@@ -85,7 +90,10 @@ class CommentController extends Controller {
 	 */
 	public function destroy($id)
 	{
-		//
+        $comment = Comment::findOrFail($id);
+        $comment->delete();
+
+        return redirect()->back();
 	}
 
 }

@@ -28,6 +28,11 @@
                             @foreach($comments as $comment)
                                 <h3><i class="fa fa-comment"></i> {{ $comment->name }} says:
                                     <small> {{ date('G:i F, d, Y', strtotime($comment->created_at)) }}</small>
+                                    <a href="{{ route('comment.edit', $comment->id) }}" style="color: #000000"><i class="fa fa-pencil"></i></a>
+                                    {!! Form::open(['method' => 'DELETE', 'url' => 'comment/' . $comment->id]) !!}
+                                    <button type="submit" class="btn btn-sm btn-default"><i class="fa fa-trash"></i>
+                                    </button>
+                                    {!! Form::close() !!}
                                 </h3>
                                 <p>{{ $comment->message }}</p>
                             @endforeach
